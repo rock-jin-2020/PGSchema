@@ -1,6 +1,6 @@
 <?php
 
-namespace Rock\PGSchema\Commands;
+namespace jinjian\PGSchema\Commands;
 
 use Illuminate\Console\Command;
 use DB;

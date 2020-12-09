@@ -1,13 +1,13 @@
 <?php
 
-namespace Rock\PGSchema\Facades;
+namespace jinjian\PGSchema\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class PGSchema
  *
- * @package Rock\PGSchema\Facades
+ * @package jinjian\PGSchema\Facades
  */
 class PGSchema extends Facade
 {

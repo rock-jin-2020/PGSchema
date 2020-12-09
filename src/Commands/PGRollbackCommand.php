@@ -1,6 +1,6 @@
 <?php
 
-namespace Rock\PGSchema\Commands;
+namespace jinjian\PGSchema\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Database\Console\Migrations\RollbackCommand;
