@@ -1,10 +1,24 @@
 {
     "name": "jinjian/pgschema",
+    "description": "postgresql schemas for laravel 5",
+    "keywords" : ["laravel", "postgres"],
+    "license" : "MIT",
     "authors": [
         {
             "name": "jinjian",
             "email": "jian.jin@vivicloud.net.cn"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "~5.5 || ^6.0",
+        "illuminate/console": "~5.5 || ^6.0",
+        "illuminate/database": "~5.5 || ^6.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jinjian\\PGSchema": "src/"
+        }
+    },
+    "minimum-stability": "stable"
 }
