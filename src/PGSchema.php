@@ -1,6 +1,6 @@
 <?php
 
-namespace jinjian\PGSchema;
+namespace RockJin\PGSchema;
 
 use Closure;
 use DB;
@@ -8,7 +8,7 @@ use DB;
 /**
  * Class PGSchema
  *
- * @package jinjian\PGSchema
+ * @package RockJin\PGSchema
  */
 class PGSchema
 {
