@@ -1,6 +1,6 @@
 <?php
 
-namespace Jinjian\PGSchema;
+namespace Rock\PGSchema;
 
 use Closure;
 use DB;
@@ -8,7 +8,7 @@ use DB;
 /**
  * Class PGSchema
  *
- * @package RockJin\PGSchema
+ * @package Rock\PGSchema
  */
 class PGSchema
 {
@@ -23,11 +23,10 @@ class PGSchema
     public function listSchemas($databaseName = null)
     {
         if ($this->getDatabaseDriverName($databaseName) == 'pgsql') {
-            $schemas = DB::connection($databaseName)->table('pg_catalog.pg_namespace')
-                ->select('nspname')
-                ->where('nspname', 'not like', 'pg_%')
-                ->where('nspowner', '<>', 1)
-                ->where('nspname', '<>', 'information_schema')
+            $schemas = DB::connection($databaseName)->table('information_schema.schemata')
+                ->select('schema_name')
+                ->where('schema_name', 'not like', 'pg_%')
+                ->where('schema_name', '<>', 'information_schema')
                 ->get();
 
             return $schemas;
@@ -46,10 +45,9 @@ class PGSchema
     public function schemaExists($schemaName, $databaseName = null)
     {
         if ($this->getDatabaseDriverName($databaseName) == 'pgsql') {
-            $schema = DB::connection($databaseName)->table('pg_catalog.pg_namespace')
-                ->select('nspname')
-                ->where('nspowner', '<>', 1)
-                ->where('nspname', '=', $schemaName)
+            $schema = DB::connection($databaseName)->table('information_schema.schemata')
+                ->select('schema_name')
+                ->where('schema_name', '=', $schemaName)
                 ->count();
 
             return ($schema > 0);
@@ -69,12 +67,12 @@ class PGSchema
     public function tableExists($tableName, $schemaName, $databaseName = null)
     {
         if ($this->getDatabaseDriverName($databaseName) == 'pgsql') {
-            $exists = DB::connection($databaseName)->table('pg_tables')
-                ->select('tablename')
-                ->where('schemaname', '=', $schemaName)
-                ->where('tablename', '=', $tableName)
-                ->exists();
-            return $exists;
+            $table = DB::connection($databaseName)->table('information_schema.tables')
+                ->select('table_schema')
+                ->where('table_schema', '=', $schemaName)
+                ->where('table_name', '=', $tableName)
+                ->count();
+            return ($table > 0);
         }
         return true;
     }
@@ -115,9 +113,13 @@ class PGSchema
             if (!is_array($schemaName)) {
                 $schemas = [$schemaName];
             }
+
+            // If not connected to database, only setting the schema to database config
+            // And laravel PostgresConnection will set search_path after connection created.
             if (!isset(DB::getConnections()[$databaseName])) {
                 $this->setDatabaseSchemaConfig($schemaName, $databaseName);
             }
+
             // set connection to schema
             $query = 'SET search_path TO ' . implode(',', $schemas);
             DB::connection($databaseName)->statement($query);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jinjian\PGSchema\Commands;
+namespace Rock\PGSchema\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Database\Console\Migrations\RefreshCommand;

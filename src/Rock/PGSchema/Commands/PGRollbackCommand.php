@@ -1,19 +1,20 @@
 <?php
 
-namespace Jinjian\PGSchema\Commands;
+namespace Rock\PGSchema\Commands;
 
-use Illuminate\Database\Console\Seeds\SeedCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Database\Console\Migrations\RollbackCommand;
 
-
-class PGSeedCommand extends SeedCommand
+class PGRollbackCommand extends RollbackCommand
 {
+
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'pgschema:seed';
+    protected $name = 'pgschema:rollback';
+
 
     /**
      * Execute the console command.
@@ -30,7 +31,7 @@ class PGSeedCommand extends SeedCommand
             $this->laravel['pgschema']->schema($this->option('schema'), $this->option('database'));
         }
 
-        // Running Laravel seed command.
+        // Running Laravel rollback command.
         parent::handle();
 
     }
@@ -43,7 +44,7 @@ class PGSeedCommand extends SeedCommand
     protected function getOptions()
     {
         return array_merge(parent::getOptions(), [
-            ['schema', null, InputOption::VALUE_OPTIONAL, 'The database schema to seed'],
+            ['schema', null, InputOption::VALUE_OPTIONAL, 'The database schema to use'],
         ]);
     }
 

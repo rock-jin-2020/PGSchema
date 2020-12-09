@@ -1,10 +1,8 @@
 <?php
 
-namespace Jinjian\PGSchema\Commands;
-
+namespace Rock\PGSchema\Commands;
 
 use Illuminate\Database\Console\Migrations\MigrateCommand;
-use DB;
 
 class PGMigrateCommand extends MigrateCommand
 {
@@ -40,5 +38,5 @@ class PGMigrateCommand extends MigrateCommand
         // Running Laravel migrate command.
         parent::handle();
     }
-    
+
 }

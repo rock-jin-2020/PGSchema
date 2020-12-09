@@ -9,21 +9,26 @@ This package also provide artisan commands for migrations and seeds supports for
 PGSchema will check and only affects when specific connection driver is `pgsql`.
 So you can using PGSchema to your projects safely with any database connection drivers without error occurred.
 
+## Laravel version
+
+Current package version works for Laravel `5+` .
+
+
 ## Installation
 
 1. Use composer to add the package into your project
 ```
-composer require jinjian\pgschema
+composer require jinjian/pgschema:dev-master
 ```
 
 2. Add service provider into your providers array in `config/app.php`
 ```
-Jinjian\PGSchema\PGSchemaServiceProvider::class,
+Rock\PGSchema\PGSchemaServiceProvider::class,
 ```
 
 3. Add alias to aliases array in `config/app.php`
 ```
-'PGSchema' => Jinjian\PGSchema\PGSchema\PGSchema::class,
+'PGSchema' => Rock\PGSchema\Facades\PGSchema::class,
 ```
 
 ## Artisan Commands
@@ -53,34 +58,6 @@ Options:
 
 Help:
   Run the database migrations
-```
-
-### pgschema:migrate_all
-`pgschema:migrate_all` , you can specific all the database schemas for migrations.
- And it will auto install `migrations` repository table for the schemas.
-```
-Usage:
-  pgschema:migrate_all [options]
-
-Options:
-      --database[=DATABASE]  The database connection to use.
-      --schema[=SCHEMA]      The database schema to use.
-      --force                Force the operation to run when in production.
-      --path[=PATH]          The path of migrations files to be executed.
-      --pretend              Dump the SQL queries that would be run.
-      --seed                 Indicates if the seed task should be re-run.
-      --step                 Force the migrations to be run so they can be rolled back individually.
-  -h, --help                 Display this help message
-  -q, --quiet                Do not output any message
-  -V, --version              Display this application version
-      --ansi                 Force ANSI output
-      --no-ansi              Disable ANSI output
-  -n, --no-interaction       Do not ask any interactive question
-      --env[=ENV]            The environment the command should run under
-  -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
-
-Help:
-  Run the database migrations for all schemas
 ```
 
 ### pgschema:rollback
@@ -187,6 +164,27 @@ Help:
 ```
 
 
+### pgschema:create-schema
+`pgschema:create-schema` create `schema` for `database` .
+```
+Usage:
+  pgschema:create-schema [options] [--] <schema>
+
+Arguments:
+  schema                     The database schema to create
+
+Options:
+      --database[=DATABASE]  The database connection to use
+  -h, --help                 Display this help message
+  -q, --quiet                Do not output any message
+  -V, --version              Display this application version
+      --ansi                 Force ANSI output
+      --no-ansi              Disable ANSI output
+  -n, --no-interaction       Do not ask any interactive question
+      --env[=ENV]            The environment the command should run under
+  -v|vv|vvv, --verbose       Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+```
+
 ## Facade Helper Functions
 ### Create new Schema
 
@@ -218,7 +216,5 @@ if schema is call without $databaseName argument, it using the default connectio
 if each is call without $databaseName argument, it using the default connection.
 
 
-## Laravel version
-
-Current package version works for Laravel 5+.
-
+## License
+MIT: https://racklin.mit-license.org/

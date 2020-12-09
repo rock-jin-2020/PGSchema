@@ -1,19 +1,19 @@
 <?php
 
-namespace Jinjian\PGSchema;
+namespace Rock\PGSchema;
 
 use Illuminate\Support\ServiceProvider;
-use Jinjian\PGSchema\Commands\PGMigrateCommand;
-use Jinjian\PGSchema\Commands\PGMigrateAllCommand;
-use Jinjian\PGSchema\Commands\PGRefreshCommand;
-use Jinjian\PGSchema\Commands\PGResetCommand;
-use Jinjian\PGSchema\Commands\PGRollbackCommand;
-use Jinjian\PGSchema\Commands\PGSeedCommand;
+use Rock\PGSchema\Commands\PGCreateSchema;
+use Rock\PGSchema\Commands\PGMigrateCommand;
+use Rock\PGSchema\Commands\PGRefreshCommand;
+use Rock\PGSchema\Commands\PGResetCommand;
+use Rock\PGSchema\Commands\PGRollbackCommand;
+use Rock\PGSchema\Commands\PGSeedCommand;
 
 /**
  * Class PGSchemaServiceProvider
  *
- * @package Jinjian\PGSchema
+ * @package Rock\PGSchema
  */
 class PGSchemaServiceProvider extends ServiceProvider
 {
@@ -31,9 +31,6 @@ class PGSchemaServiceProvider extends ServiceProvider
         $this->app->singleton('pgschema.migrate', function ($app) {
             return new PGMigrateCommand($app['migrator']);
         });
-        $this->app->singleton('pgschema.migrate_all', function ($app) {
-            return new PGMigrateAllCommand($app['migrator']);
-        });
         $this->app->singleton('pgschema.rollback', function ($app) {
             return new PGRollbackCommand($app['migrator']);
         });
@@ -46,13 +43,18 @@ class PGSchemaServiceProvider extends ServiceProvider
         $this->app->singleton('pgschema.seed', function ($app) {
             return new PGSeedCommand($app['db']);
         });
+
+        $this->app->singleton('pgschema.create-schema', function ($app) {
+            return new PGCreateSchema($app['pgschema']);
+        });
+
         $this->commands([
             'pgschema.migrate',
-            'pgschema.migrate_all',
             'pgschema.rollback',
             'pgschema.reset',
             'pgschema.refresh',
             'pgschema.seed',
+            'pgschema.create-schema'
         ]);
     }
 

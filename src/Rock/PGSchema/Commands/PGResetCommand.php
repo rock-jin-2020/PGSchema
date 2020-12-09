@@ -1,11 +1,11 @@
 <?php
 
-namespace Jinjian\PGSchema\Commands;
+namespace Rock\PGSchema\Commands;
 
 use Symfony\Component\Console\Input\InputOption;
-use Illuminate\Database\Console\Migrations\RollbackCommand;
+use Illuminate\Database\Console\Migrations\ResetCommand;
 
-class PGRollbackCommand extends RollbackCommand
+class PGResetCommand extends ResetCommand
 {
 
     /**
@@ -13,7 +13,7 @@ class PGRollbackCommand extends RollbackCommand
      *
      * @var string
      */
-    protected $name = 'pgschema:rollback';
+    protected $name = 'pgschema:reset';
 
 
     /**
@@ -31,7 +31,7 @@ class PGRollbackCommand extends RollbackCommand
             $this->laravel['pgschema']->schema($this->option('schema'), $this->option('database'));
         }
 
-        // Running Laravel rollback command.
+        // Running Laravel reset command.
         parent::handle();
 
     }
