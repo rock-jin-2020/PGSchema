@@ -1,13 +1,13 @@
 <?php
 
-namespace Poyi\PGSchema\Facades;
+namespace Rock\PGSchema\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class PGSchema
  *
- * @package Poyi\PGSchema\Facades
+ * @package Rock\PGSchema\Facades
  */
 class PGSchema extends Facade
 {

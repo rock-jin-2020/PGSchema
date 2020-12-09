@@ -1,6 +1,6 @@
 <?php
 
-namespace Poyi\PGSchema;
+namespace Rock\PGSchema;
 
 use Closure;
 use DB;
@@ -8,7 +8,7 @@ use DB;
 /**
  * Class PGSchema
  *
- * @package Poyi\PGSchema
+ * @package Rock\PGSchema
  */
 class PGSchema
 {

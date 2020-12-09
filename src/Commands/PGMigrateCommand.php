@@ -1,6 +1,6 @@
 <?php
 
-namespace Poyi\PGSchema\Commands;
+namespace Rock\PGSchema\Commands;
 
 
 use Illuminate\Database\Console\Migrations\MigrateCommand;

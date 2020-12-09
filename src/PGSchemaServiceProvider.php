@@ -1,19 +1,19 @@
 <?php
 
-namespace Poyi\PGSchema;
+namespace Rock\PGSchema;
 
 use Illuminate\Support\ServiceProvider;
-use Poyi\PGSchema\Commands\PGMigrateCommand;
-use Poyi\PGSchema\Commands\PGMigrateAllCommand;
-use Poyi\PGSchema\Commands\PGRefreshCommand;
-use Poyi\PGSchema\Commands\PGResetCommand;
-use Poyi\PGSchema\Commands\PGRollbackCommand;
-use Poyi\PGSchema\Commands\PGSeedCommand;
+use Rock\PGSchema\Commands\PGMigrateCommand;
+use Rock\PGSchema\Commands\PGMigrateAllCommand;
+use Rock\PGSchema\Commands\PGRefreshCommand;
+use Rock\PGSchema\Commands\PGResetCommand;
+use Rock\PGSchema\Commands\PGRollbackCommand;
+use Rock\PGSchema\Commands\PGSeedCommand;
 
 /**
  * Class PGSchemaServiceProvider
  *
- * @package Poyi\PGSchema
+ * @package Rock\PGSchema
  */
 class PGSchemaServiceProvider extends ServiceProvider
 {
