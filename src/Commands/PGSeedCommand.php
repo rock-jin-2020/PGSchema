@@ -1,6 +1,6 @@
 <?php
 
-namespace RockJin\PGSchema\Commands;
+namespace Jinjian\PGSchema\Commands;
 
 use Illuminate\Database\Console\Seeds\SeedCommand;
 use Symfony\Component\Console\Input\InputOption;

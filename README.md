@@ -13,17 +13,17 @@ So you can using PGSchema to your projects safely with any database connection d
 
 1. Use composer to add the package into your project
 ```
-composer require RockJin\PGSchema
+composer require jinjian\pgschema
 ```
 
 2. Add service provider into your providers array in `config/app.php`
 ```
-Vivicloud\PGSchema\PGSchemaServiceProvider::class,
+Jinjian\PGSchema\PGSchemaServiceProvider::class,
 ```
 
 3. Add alias to aliases array in `config/app.php`
 ```
-'PGSchema' => RockJin\PGSchema\PGSchema::class,
+'PGSchema' => Jinjian\PGSchema\PGSchema\PGSchema::class,
 ```
 
 ## Artisan Commands

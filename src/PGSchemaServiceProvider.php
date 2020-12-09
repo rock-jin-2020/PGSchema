@@ -1,19 +1,19 @@
 <?php
 
-namespace RockJin\PGSchema;
+namespace Jinjian\PGSchema;
 
 use Illuminate\Support\ServiceProvider;
-use RockJin\PGSchema\Commands\PGMigrateCommand;
-use RockJin\PGSchema\Commands\PGMigrateAllCommand;
-use RockJin\PGSchema\Commands\PGRefreshCommand;
-use RockJin\PGSchema\Commands\PGResetCommand;
-use RockJin\PGSchema\Commands\PGRollbackCommand;
-use RockJin\PGSchema\Commands\PGSeedCommand;
+use Jinjian\PGSchema\Commands\PGMigrateCommand;
+use Jinjian\PGSchema\Commands\PGMigrateAllCommand;
+use Jinjian\PGSchema\Commands\PGRefreshCommand;
+use Jinjian\PGSchema\Commands\PGResetCommand;
+use Jinjian\PGSchema\Commands\PGRollbackCommand;
+use Jinjian\PGSchema\Commands\PGSeedCommand;
 
 /**
  * Class PGSchemaServiceProvider
  *
- * @package RockJin\PGSchema
+ * @package Jinjian\PGSchema
  */
 class PGSchemaServiceProvider extends ServiceProvider
 {
