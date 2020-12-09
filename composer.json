@@ -1,0 +1,10 @@
+{
+    "name": "jinjian/pgschema",
+    "authors": [
+        {
+            "name": "jianjin",
+            "email": "jian.jin@vivicloud.net.cn"
+        }
+    ],
+    "require": {}
+}
